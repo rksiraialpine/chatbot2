@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+
+  <!-- MOBILE FULL SCREEN -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    #chatbot {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="chatbot">
+
+<!-- 👇 PASTE YOUR GOOGLE SITES CHATBOT CODE HERE -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Skill Expo Voice Chatbot</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#1e3c72,#2a5298);
+}
+#bot{
+  max-width:420px;
+  margin:20px auto;
+  background:#fff;
+  border-radius:15px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+#header{
+  background:#0b71ea;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+  font-weight:bold;
+}
+#chat{
+  height:340px;
+  overflow-y:auto;
+  padding:10px;
+}
+.user,.botmsg{
+  padding:10px 14px;
+  margin:6px 0;
+  border-radius:18px;
+  max-width:85%;
+}
+.user{
+  background:#d1e7ff;
+  margin-left:auto;
+}
+.botmsg{
+  background:#f1f1f1;
+}
+#controls{
+  display:flex;
+  border-top:1px solid #ccc;
+}
+#controls input{
+  flex:1;
+  border:none;
+  padding:12px;
+}
+#controls button{
+  border:none;
+  padding:12px;
+  cursor:pointer;
+  font-size:16px;
+}
+#send{background:#0b71ea;color:white;}
+#mic{background:#28a745;color:white;}
+</style>
+</head>
+
+<body>
+<div id="bot">
+  <div id="header">🎙️ Skill Expo Voice Chatbot</div>
+  <div id="chat">
+    <div class="botmsg">
+      Hello! Ask me about Skill Expo, NEF, or Winter Carnival.<br>
+      नमस्ते! स्किल एक्सपो से जुड़े सवाल पूछिए।
+    </div>
+  </div>
+  <div id="controls">
+    <input id="input" placeholder="Type or speak your question..." />
+    <button id="mic">🎤</button>
+    <button id="send">➤</button>
+  </div>
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const input = document.getElementById("input");
+
+function add(text, cls){
+  let d = document.createElement("div");
+  d.className = cls;
+  d.innerText = text;
+  chat.appendChild(d);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function speak(text){
+  let u = new SpeechSynthesisUtterance(text);
+  u.lang = text.match(/[अ-ह]/) ? "hi-IN" : "en-IN";
+  speechSynthesis.speak(u);
+}
+
+function answer(q){
+  q = q.toLowerCase().trim();
+
+  // Greeting
+  if (
+    q === "hi" || q === "hello" || q === "hey" ||
+    q.includes("hi ") || q.includes("hello") || q.includes("hey")
+  )
+    return "Hello! How can I help you about the Skill Expo?\nनमस्ते! मैं आपको स्किल एक्सपो के बारे में कैसे मदद कर सकता हूँ?";
+
+  if(q.includes("skill expo"))
+    return "Skill Expo is the platform for demonstration of the skills acquired by students.\nस्किल एक्सपो छात्रों के कौशल प्रदर्शन का मंच है।";
+if(q.includes("about") && q.includes("Skill Expo"))
+    return " Skill Expo is the platform for demonstration of the skills acquired by students.\nस्किल एक्सपो छात्रों के कौशल प्रदर्शन का मंच है।";
+
+
+  if(q.includes("events"))
+    return "Today there are three events: Skill Expo, NEF and Winter Carnival.";
+  if(q.includes("about") && q.includes("event"))
+    return " Today there are three events: Skill Expo, NEF and Winter Carnival.";
+
+  if(q.includes("winter") && q.includes("games"))
+    return "More than ten games are available in the Winter Carnival.";
+  if(q.includes("winter") && q.includes("carnival"))
+    return "Winter carnival is a celebration using different games  .";
+
+  if(q.includes("nef"))
+    return "NEF showcases students' entrepreneurial ideas.";
+
+  if(q.includes("subjects"))
+    return "Subjects include IT, AI, Robotics, Hindi, English, Maths, Science and SST. and Arts";
+
+  if(q.includes("location"))
+    return "The event is held at Alpine Public School, Khurja.";
+
+  if(q.includes("date"))
+    return "Today is 25 December 2025.";
+  if(q.includes("day"))
+    return "The day of the event is Thursday";
+  if(q.includes("when"))
+    return "The event is being held on 25th December ie. Thursday from 9 am to 4 pm  .";
+
+  if(q.includes("timing"))
+    return "The event is open from 9 AM to 4 PM.";
+
+  if(q.includes("principal"))
+    return "The Principal is Mrs. Nidhi Gulati.";
+  if(q.includes("director"))
+    return "The director is Mr. Sandeep Mittal.";
+  if(q.includes("host"))
+    return "Alpine Public School is the host of the event";
+  if(q.includes("where"))
+    return "the event is being organised in the campus of Alpine Public School";
+
+  if(q.includes("developer"))
+    return "This chatbot is developed by Yatharth Sharma and Soham Pratap Singh, Class 8 B. of Alpine Public School, Khurja";
+
+  if(q.includes("photography"))
+    return "Photography is not allowed inside the expo.";
+  if(q.includes("how") && q.includes("many") && q.includes("models") )
+    return " There are more than 100 models in Skill Expo  .";
+   if(q.includes("how") && q.includes("many") && q.includes("projects") )
+    return " There are more than 100 models/projects in Skill Expo  .";
+  if(q.includes("suggest") )
+    return " I would like to suggest you to visit all the events and give your valuable feedback.";
+  if(q.includes("models") && q.includes("ai"))
+    return " AI models include:  Educational Website, Folder Lock, Logo plus QR, Feedback , Body Type, Bubble Shoot Game, Chatbot, AQI,      Unity Game, Healthcare, Scratch Game, 3D image creation, Serving Bot, AI-tech Website, App Inentor, Invitation Cards.";
+
+if(q.includes("models") && q.includes("it"))
+    return " AI/IT/Computer models include:  Educational Website, Folder Lock, Logo plus QR, Feedback , Body Type, Bubble Shoot Game, Chatbot, AQI,      Unity Game, Healthcare, Scratch Game, 3D image creation, Serving Bot, AI-tech Website, App Inentor, Invitation Cards.";
+
+if(q.includes("models") && q.includes("Computer"))
+    return " AI/IT/Computer models include:  Educational Website, Folder Lock, Logo plus QR, Feedback , Body Type, Bubble Shoot Game, Chatbot, AQI,      Unity Game, Healthcare, Scratch Game, 3D image creation, Serving Bot, AI-tech Website, App Inentor, Invitation Cards.";
+
+if(q.includes("models") && q.includes("english"))
+    return "Models in english include: Verb Project, Flipbook, Types of Adjective, Pronounciation, Active Passive Models, Parts of Speech Projects, Tense Working Model, English Book Mark";
+
+if(q.includes("model") && q.includes("english"))
+    return "Models in english include: Verb Project, Flipbook, Types of Adjective, Pronounciation, Active Passive Models, Parts of Speech Projects, Tense Working Model, English Book Mark";
+
+if(q.includes("models") && q.includes("robotics"))
+    return "Models in robotics include:Morning alarm, Smart Kitchen, Beam Walker Car, Cloth Protector, Smart Parking System, Smart Tiles, Priority Passway, Smart Eye Protector, Underpass System, Air Qulaity Monitoring System, Smart Home Automation, Student Counting System Bus, Otto Bot, Pet Saver, Obstacle Avoidance Bot, Humanoid Robot, Pastiside Rover and more ";
+
+if(q.includes("model") && q.includes("robotics"))
+    return "Models in robotics include:Morning alarm, Smart Kitchen, Beam Walker Car, Cloth Protector, Smart Parking System, Smart Tiles, Priority Passway, Smart Eye Protector, Underpass System, Air Qulaity Monitoring System, Smart Home Automation, Student Counting System Bus, Otto Bot, Pet Saver, Obstacle Avoidance Bot, Humanoid Robot, Pastiside Rover and more ";
+
+if(q.includes("models") && q.includes("science"))
+    return "Models in Science include: Candle Making Model, Waste Water stop Model, Pollution Observer, Working model of Lungs, Free Energy with water wheel, Earth day night process, Rain water harvesting, Persicope, Calidoscope, Disater alert Pro, Weight electricty Generator ";
+if(q.includes("model") && q.includes("science"))
+    return " Models in science include :Candle Making Model, Waste Water stop Model, Pollution Observer, Working model of Lungs, Free Energy with water wheel, Earth day night process, Rain water harvesting, Persicope, Calidoscope, Disater alert Pro, Weight electricty Generator ";
+
+if(q.includes("models") && q.includes("maths"))
+    return " Models in Maths include: Robot, Ram Mandir, Value of Pi, Rotating Disk, Finding Height Using Trigonometry, Model of algeraic formula, Calculator, Spinner, Mandala , Pythagoras ";
+if(q.includes("model") && q.includes("maths"))
+    return "Models in maths include: Robot, Ram Mandir, Value of Pi, Rotating Disk, Finding Height Using Trigonometry, Model of algeraic formula, Calculator, Spinner, Mandala , Pythagoras ";
+
+if(q.includes("projects") && q.includes("maths"))
+    return " Models in Maths include: Robot, Ram Mandir, Value of Pi, Rotating Disk, Finding Height Using Trigonometry, Model of algeraic formula, Calculator, Spinner, Mandala , Pythagoras ";
+if(q.includes("projects") && q.includes("maths"))
+    return "Models in maths include: Robot, Ram Mandir, Value of Pi, Rotating Disk, Finding Height Using Trigonometry, Model of algeraic formula, Calculator, Spinner, Mandala , Pythagoras ";
+
+if(q.includes("models") && q.includes("sst"))
+    return "Models in SSt include: Fundamental Rights, Local Goverment, Means of communication, Water resources, Natural Resources, Indian Festivals, Democracy, WaterCycle, 3D landscapes, indian pariliaments, Types of industries, Types of Crops, Government Central and State, Make City Infrstructure, Tribal Heritage Museum ";
+
+if(q.includes("model") && q.includes("sst"))
+    return "Models in SSt include: Fundamental Rights, Local Goverment, Means of communication, Water resources, Natural Resources, Indian Festivals, Democracy, WaterCycle, 3D landscapes, indian pariliaments, Types of industries, Types of Crops, Government Central and State, Make City Infrstructure, Tribal Heritage Museum ";
+
+
+if(q.includes("chief") && q.includes("guests"))
+    return "Chief guets of the event 1. Mr. Nitin Sethi    2. Mrs. Meenakhsi  MLA  3. Mr. Dheeraj Taneja ";
+
+if(q.includes("winner") && q.includes(" last year"))
+    return "AI and Robotics ";
+if(q.includes("bye"))
+    return " Thank you for visiting Skill Expo ! Have a nice day. bye";
+
+
+  
+
+  return "Please ask me something else.";
+}
+
+// Send message
+function sendMessage(){
+  if(!input.value) return;
+  add(input.value,"user");
+  let res = answer(input.value);
+  add(res,"botmsg");
+  speak(res);
+  input.value="";
+}
+
+document.getElementById("send").onclick = sendMessage;
+
+// ENTER key support
+input.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    sendMessage();
+  }
+});
+
+// Voice input (voice → text typing)
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recog = new SpeechRecognition();
+recog.lang = "en-IN";
+recog.interimResults = true;
+
+recog.onresult = e => {
+  let transcript = "";
+  for(let i = e.resultIndex; i < e.results.length; i++){
+    transcript += e.results[i][0].transcript;
+  }
+  input.value = transcript;
+};
+
+recog.onend = () => {
+  if(input.value.trim() !== ""){
+    sendMessage();
+  }
+};
+
+document.getElementById("mic").onclick = ()=>recog.start();
+</script>
+</body>
+</html>
+
+
+<!-- 👆 END -->
+
+</div>
+
+</body>
+</html>
